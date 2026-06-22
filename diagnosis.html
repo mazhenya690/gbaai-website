@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>免费AI战略诊断 — 大湾区AI产业应用俱乐部</title>
+  <meta name="description" content="2分钟快速AI成熟度自评，获取免费AI战略诊断报告。大湾区AI产业应用俱乐部提供AI战略咨询、技术落地、市值管理服务。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #dbeafe;
+      --accent: #06b6d4;
+      --bg: #f8fafc;
+      --bg-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans SC', 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f766e 100%);
+      color: white;
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .hero h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; margin-bottom: 12px; }
+    .hero p { color: #94a3b8; font-size: 1rem; max-width: 500px; margin: 0 auto; }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .hero .steps {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .hero .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+    .hero .step-num {
+      background: #f97316;
+      color: white;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Form */
+    .form-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 40px;
+      margin: -20px auto 40px;
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+    .form-card h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--primary);
+    }
+    .form-card .progress-bar {
+      background: var(--bg-alt);
+      height: 6px;
+      border-radius: 3px;
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+    .form-card .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 3px;
+      width: 33%;
+      transition: width 0.4s;
+    }
+
+    .form-group { margin-bottom: 24px; }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+    .form-group .sub { font-size: 0.82rem; color: var(--text-light); font-weight: 400; }
+    .form-group .options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group .option {
+      display: flex;
+      align-items: center;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      gap: 12px;
+    }
+    .form-group .option:hover { border-color: var(--primary); background: #f8fafc; }
+    .form-group .option input[type="radio"],
+    .form-group .option input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      flex-shrink: 0;
+    }
+    .form-group .option .opt-label { font-size: 0.9rem; }
+    .form-group .option .opt-desc { font-size: 0.78rem; color: var(--text-light); }
+
+    .form-group input[type="text"],
+    .form-group input[type="tel"],
+    .form-group input[type="email"] {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+
+    .btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      color: white;
+      padding: 16px 24px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s;
+      font-family: inherit;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .note { font-size: 0.8rem; color: var(--text-light); text-align: center; margin-top: 16px; }
+
+    /* Success */
+    .success-card {
+      display: none;
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 60px 40px;
+      margin: -20px auto 40px;
+      text-align: center;
+      max-width: 720px;
+    }
+    .success-card .icon { font-size: 4rem; margin-bottom: 16px; }
+    .success-card h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+    .success-card p { color: var(--text-light); margin-bottom: 24px; }
+
+    .back-link {
+      display: inline-block;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .form-card { padding: 24px 20px; margin: -10px 10px 30px; }
+      .hero .steps { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="container">
+      <div class="badge">🏥 免费AI战略诊断</div>
+      <h1>2分钟快速评估<br>你的企业AI成熟度</h1>
+      <p>完成自评后，我们将为你提供免费的AI战略诊断建议</p>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span> 完成6道自评题</div>
+        <div class="step"><span class="step-num">2</span> AI智能评估分析</div>
+        <div class="step"><span class="step-num">3</span> 获取诊断报告</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Assessment Form -->
+  <div class="form-card" id="formCard">
+    <h2>📋 AI成熟度自评</h2>
+    <p style="font-size:0.85rem;color:var(--text-light);margin-bottom:20px;">请根据企业实际情况勾选最符合的选项</p>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <form id="diagnosisForm" onsubmit="return handleSubmit(event)">
+
+      <!-- Q1 -->
+      <div class="form-group">
+        <label>1. 企业规模 <span class="sub">（单选）</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="q1" value="startup" required><div><div class="opt-label">初创/小微企业（&lt;50人）</div></div></label>
+          <label class="option"><input type="radio" name="q1" value="mid"><div><div class="opt-label">成长型企业（50-500人）</div></div></label>
+          <label class="option"><input type="radio" name="q1" value="large"><div><div class="opt-label">大型企业（500-5000人）</div></div></label>
+          <label class="option"><input type="radio" name="q1" value="giant"><div><div class="opt-label">集团/上市公司（5000人以上）</div></div></label>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="form-group">
+        <label>2. 当前AI应用现状 <span class="sub">（单选）</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="q2" value="none" required><div><div class="opt-label">尚未开始</div><div class="opt-desc">团队基本没有使用AI工具</div></div></label>
+          <label class="option"><input type="radio" name="q2" value="exploring"><div><div class="opt-label">探索阶段</div><div class="opt-desc">个别部门尝试使用AI工具</div></div></label>
+          <label class="option"><input type="radio" name="q2" value="partial"><div><div class="opt-label">局部落地</div><div class="opt-desc">部分业务流程已经嵌入AI</div></div></label>
+          <label class="option"><input type="radio" name="q2" value="systematic"><div><div class="opt-label">系统推进</div><div class="opt-desc">有明确的AI战略和推进计划</div></div></label>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="form-group">
+        <label>3. 核心痛点 <span class="sub">（最多选3项）</span></label>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="q3" value="strategy"><div><div class="opt-label">战略不清晰</div><div class="opt-desc">不知道AI从哪切入</div></div></label>
+          <label class="option"><input type="checkbox" name="q3" value="talent"><div><div class="opt-label">人才匮乏</div><div class="opt-desc">缺少AI技术人才和AI应用培训</div></div></label>
+          <label class="option"><input type="checkbox" name="q3" value="tech"><div><div class="opt-label">技术落地难</div><div class="opt-desc">AI工具与实际业务脱节</div></div></label>
+          <label class="option"><input type="checkbox" name="q3" value="data"><div><div class="opt-label">数据基础差</div><div class="opt-desc">数据分散、质量差、无法支撑AI</div></div></label>
+          <label class="option"><input type="checkbox" name="q3" value="cost"><div><div class="opt-label">投入产出不清</div><div class="opt-desc">担心投入大但看不到效果</div></div></label>
+          <label class="option"><input type="checkbox" name="q3" value="market"><div><div class="opt-label">出海/获客难</div><div class="opt-desc">跨境电商、品牌出海缺乏有效手段</div></div></label>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="form-group">
+        <label>4. 计划AI投入预算 <span class="sub">（单选）</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="q4" value="none" required><div><div class="opt-label">暂无预算，先了解</div></div></label>
+          <label class="option"><input type="radio" name="q4" value="small"><div><div class="opt-label">10万以下 &nbsp;探索性试点</div></div></label>
+          <label class="option"><input type="radio" name="q4" value="mid"><div><div class="opt-label">10-50万 &nbsp;落地1-2个具体场景</div></div></label>
+          <label class="option"><input type="radio" name="q4" value="large"><div><div class="opt-label">50-200万 &nbsp;系统性AI部署</div></div></label>
+          <label class="option"><input type="radio" name="q4" value="enterprise"><div><div class="opt-label">200万以上 &nbsp;全面AI转型</div></div></label>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="form-group">
+        <label>5. 您最希望解决的问题 <span class="sub">（单选）</span></label>
+        <div class="options">
+          <label class="option"><input type="radio" name="q5" value="efficiency" required><div><div class="opt-label">⚡ 提升运营效率 / 降本增效</div></div></label>
+          <label class="option"><input type="radio" name="q5" value="revenue"><div><div class="opt-label">💰 增加营收 / 获取新客户</div></div></label>
+          <label class="option"><input type="radio" name="q5" value="product"><div><div class="opt-label">🚀 产品创新 / 商业模式升级</div></div></label>
+          <label class="option"><input type="radio" name="q5" value="overseas"><div><div class="opt-label">🌏 品牌出海 / 跨境电商</div></div></label>
+          <label class="option"><input type="radio" name="q5" value="investment"><div><div class="opt-label">📈 市值管理 / 资本运作</div></div></label>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="form-group" style="margin-top:32px;padding-top:24px;border-top:2px solid var(--primary-light);">
+        <label>📞 联系方式 <span class="sub">（提交后我们将联系您提供诊断报告）</span></label>
+        <div style="display:grid;gap:12px;">
+          <input type="text" name="name" placeholder="您的姓名" required>
+          <input type="text" name="company" placeholder="公司名称" required>
+          <input type="tel" name="phone" placeholder="手机号" required>
+          <input type="email" name="email" placeholder="邮箱（选填）">
+          <input type="text" name="wechat" placeholder="微信号（选填）">
+        </div>
+      </div>
+
+      <button type="submit" class="btn" id="submitBtn">🔥 提交诊断，获取免费报告</button>
+      <p class="note">我们承诺对您的信息严格保密，仅用于AI诊断分析及后续服务</p>
+    </form>
+  </div>
+
+  <!-- Success -->
+  <div class="success-card" id="successCard">
+    <div class="icon">🎉</div>
+    <h2>提交成功！</h2>
+    <p>感谢您完成AI成熟度自评。我们将在24小时内联系您，<br>并提供免费的AI战略诊断建议。</p>
+    <p style="font-size:0.88rem;color:var(--text-light);">您也可以扫码添加微信，直接沟通</p>
+    <img src="/qrcode-wechat.jpg" alt="微信二维码" style="width:160px;height:160px;border-radius:8px;margin:16px auto;display:block;">
+    <a href="/" class="back-link">← 返回首页</a>
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('diagnosisForm');
+      const data = new FormData(form);
+
+      // Build submission content
+      const answers = {};
+      answers.name = data.get('name');
+      answers.company = data.get('company');
+      answers.phone = data.get('phone');
+      answers.email = data.get('email');
+      answers.wechat = data.get('wechat');
+      answers.q1 = data.get('q1');
+      answers.q2 = data.get('q2');
+      answers.q3 = data.getAll('q3');
+      answers.q4 = data.get('q4');
+      answers.q5 = data.get('q5');
+
+      // For now, collect and show success
+      // Later this will connect to an AI agent backend
+      console.log('Diagnosis data:', JSON.stringify(answers));
+
+      // Show success
+      document.getElementById('formCard').style.display = 'none';
+      document.getElementById('successCard').style.display = 'block';
+
+      // Send to a webhook / email endpoint if needed
+      // (placeholder for future AI agent integration)
+
+      return false;
+    }
+
+    // Update progress bar as user fills
+    (function() {
+      const form = document.getElementById('diagnosisForm');
+      const progress = document.getElementById('progressFill');
+      const fields = form.querySelectorAll('input[required]');
+      const checkableFields = form.querySelectorAll('input[name="q1"], input[name="q2"], input[name="q4"], input[name="q5"], input[name="name"], input[name="company"], input[name="phone"]');
+
+      form.addEventListener('change', function() {
+        let filled = 0;
+        const total = 7; // 4 radio groups + 3 text fields (name, company, phone)
+
+        if (form.querySelector('input[name="q1"]:checked')) filled++;
+        if (form.querySelector('input[name="q2"]:checked')) filled++;
+        if (form.querySelector('input[name="q4"]:checked')) filled++;
+        if (form.querySelector('input[name="q5"]:checked')) filled++;
+        if (data.get('name')) filled++;
+        if (data.get('company')) filled++;
+        if (data.get('phone')) filled++;
+        // q3 (checkboxes) is optional weight
+
+        progress.style.width = Math.min(100, (filled / total) * 100) + '%';
+      });
+    })();
+  </script>
+
+</body>
+</html>
