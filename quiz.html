@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">水平测试 — 百舸争流AI | gbaai.club</title>
+  <meta name="description" content="AI量化交易、创业者资本运作水平测试，测测你的段位！">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/quiz.css">
+  <base href="/">
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">百</div>
+      <div>百舸争流AI<span>大湾区AI产业应用俱乐部</span></div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">首页</a>
+      <a href="solutions.html">解决方案</a>
+      <a href="membership.html">会员体系</a>
+      <a href="about.html">关于我们</a>
+      <a href="contact.html" class="nav-cta">立即咨询</a>
+    </div>
+    <div class="mobile-toggle" id="mobileToggle" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Quiz Main -->
+<section class="quiz-section">
+  <div class="container">
+    <div id="quizContainer">
+      <div class="quiz-loading">
+        <div class="quiz-loading-spinner"></div>
+        <p>加载测验中...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo" style="margin-bottom:12px;">
+          <div class="logo-icon">百</div>
+          <div>百舸争流AI<span>大湾区AI产业应用俱乐部</span></div>
+        </a>
+        <p class="footer-brand-desc">大湾区AI产业化综合服务领军机构，致力于让每一家企业都拥有AI增长引擎。</p>
+      </div>
+      <div>
+        <h4>解决方案</h4>
+        <a href="solutions.html#sailsniper">AI跨境电商</a>
+        <a href="solutions.html#shortdrama">AI短剧出海</a>
+        <a href="solutions.html#quant">AI量化交易</a>
+        <a href="solutions.html#manufacturing">AI智能制造</a>
+      </div>
+      <div>
+        <h4>快速链接</h4>
+        <a href="membership.html">会员体系</a>
+        <a href="about.html">关于我们</a>
+        <a href="contact.html">联系我们</a>
+      </div>
+      <div>
+        <h4>联系</h4>
+        <a href="tel:13521957779">📞 13521957779</a>
+        <a>📍 深圳湾科技生态园</a>
+        <a>✉️ 微信同号</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 百舸争流AI · gbaai.club</span>
+      <span>粤港澳大湾区AI产业应用俱乐部</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/quiz-data.js"></script>
+<script src="js/quiz-engine.js"></script>
+<script>
+// AI量化交易水平测试
+document.addEventListener('DOMContentLoaded', () => {
+  const data = QUIZ_DATA['quant']
+  document.getElementById('pageTitle').textContent = data.title + ' — 百舸争流AI'
+  QUIZ_ENGINE.init(data)
+})
+</script>
+</body>
+</html>
