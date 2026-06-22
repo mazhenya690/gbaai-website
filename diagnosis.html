@@ -508,30 +508,29 @@
 
     console.log('Diagnosis data:', data);
 
-    // Try to submit to backend API
-    let backendOk = false;
+        // Try to submit to backend API
+    var backendOk = false;
+    var API_URL = 'https://gbaai-api.onrender.com';
     try {
-      const resp = await fetch('https://gbaai-api.onrender.com/api/diagnosis', {
+      var resp = await fetch(API_URL + '/api/diagnosis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
       if (resp.ok) backendOk = true;
     } catch(e) {
-      // Backend not available yet, fallback to local storage
-      console.log('Backend not available, storing locally');
+      console.log('Backend not available');
     }
 
     // Fallback: store locally
     if (!backendOk) {
       try {
-        const existing = JSON.parse(localStorage.getItem('gbaai_diagnoses') || '[]');
+        var existing = JSON.parse(localStorage.getItem('gbaai_diagnoses') || '[]');
+        data._saved_locally = true;
         existing.push(data);
         localStorage.setItem('gbaai_diagnoses', JSON.stringify(existing));
       } catch(e) {}
-    }
-
-    // Show success
+    }// Show success
     document.getElementById('formCard').style.display = 'none';
     document.getElementById('successCard').style.display = 'block';
   });
